@@ -6,7 +6,7 @@ function Nav(){
     return(
         <nav className="topNav">
             <input type="checkbox" id="mobileNav"></input>
-            <label for="mobileNav"><img src={hamburger} alt="menu icon"></img></label>
+            <label htmlFor="mobileNav"><img src={hamburger} alt="menu icon"></img></label>
             <ul className="navContent">
                 <li><img src={logo} alt="Little Lemon Logo" /></li>
                 <li><a href="/">HOME</a></li>

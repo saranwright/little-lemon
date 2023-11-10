@@ -2,7 +2,9 @@ import './App.css';
 
 function Main(){
     return(
-        <div></div>
+        <div className="main">
+            <a href="/" className="button">Text</a>
+        </div>
     );
 }
 
