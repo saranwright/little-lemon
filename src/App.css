@@ -1,7 +1,27 @@
+.headerLogo {
+  width: 100%;
+  display: none;
+}
+
+.headerLogo img {
+  margin: 1em auto 0;
+  display: block;
+}
+
 .topNav {
   display: flex;
   flex-direction: row;
   align-items: center;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.topNav #mobileNav {
+  display: none;
+}
+
+.topNav > label {
+  display: none;
 }
 
 .topNav ul {
@@ -22,7 +42,8 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-
+  width: 80%;
+  margin: 0 auto;
 }
 
 .footer img {
@@ -37,4 +58,71 @@
 .footer ul {
   list-style-type: none;
   padding: 0;
+}
+
+@media only screen and (max-width: 768px) {
+  .headerLogo {
+    display: block;
+    margin-bottom: 0.5em;
+  }
+  
+  .topNav {
+    width: 90%;
+    margin: 0;
+    flex-direction: column;
+    margin: auto;
+    align-items: end;
+  }
+
+  .topNav > label {
+    display: block;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 25px;
+  }
+
+  .topNav > label img {
+    color: black;
+    display: block;
+    width: 25px;
+  }
+
+  .topNav #mobileNav {
+    display: block;
+    position: absolute;
+    top: -100px;
+  }
+
+  .topNav #mobileNav + label + .navContent {
+    display: none;
+  }
+
+  #mobileNav:checked + label + .navContent {
+    display: block;
+  }
+
+  .topNav ul {
+    padding: 0;
+    margin: 0.5em 0em;
+  }
+
+  .topNav li {
+    padding: 0.3em;
+    margin: 0;
+    display: block;
+    text-align: right;
+  }
+
+  .topNav img {
+    display: none;
+  }
+  
+  .footer {
+    width: 100%;
+  }
+
+  .footer img {
+    display: none;
+  }
 }
