@@ -2,6 +2,7 @@ import './App.css';
 import { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Hero from './hero';
+import Specials from './specials';
 
 
 function Home(){
@@ -19,6 +20,7 @@ function Home(){
 
         <div className="home">
             <Hero />
+            <Specials />
             <div className="main">
             <Link to={{pathname: '/home', hash: '#test'}}>Test</Link>
             <p>One</p>
