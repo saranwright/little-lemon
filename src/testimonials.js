@@ -12,40 +12,40 @@ function Testimonials(){
                     <p><img src={Star} alt="star" /><img src={Star} alt="star" /><img src={Star} alt="star" /><img src={HalfStar} alt="star" /></p>
                     <div className="customer">
                         <img src={Customer} alt="user icon"/>
-                        <p>Name</p>
+                        <p>S. Jones</p>
                     </div>
                     <div className="review">
-                        “Review text.”
+                        “Little Lemon is the best Mediterranean restaurant in Chicago! The food is always fresh and delicious, and the service is impeccable.”
                     </div>
                 </div>
                 <div className="ratingBox">
                     <p><img src={Star} alt="star" /><img src={Star} alt="star" /><img src={Star} alt="star" /><img src={Star} alt="star" /></p>
                         <div className="customer">
                             <img src={Customer} alt="user icon"/>
-                            <p>Name</p>
+                            <p>David Smith</p>
                         </div>
                         <div className="review">
-                            “Review text.”
+                            “I recently had dinner at Little Lemon and I was blown away! The food was even better than I expected.”
                         </div>
                 </div>
                 <div className="ratingBox">
                     <p><img src={Star} alt="star" /><img src={Star} alt="star" /><img src={Star} alt="star" /><img src={Star} alt="star" /><img src={Star} alt="star" /></p>
                         <div className="customer">
                             <img src={Customer} alt="user icon"/>
-                            <p>Name</p>
+                            <p>Emily Brown</p>
                         </div>
                         <div className="review">
-                            “Review text.”
+                            “I've been to Little Lemon several times and I've always had a great experience. The food is consistently delicious and the service is always top-notch.”
                         </div>
                 </div>
                 <div className="ratingBox">
                     <p><img src={Star} alt="star" /><img src={Star} alt="star" /><img src={Star} alt="star" /><img src={Star} alt="star" /></p>
                         <div className="customer">
                             <img src={Customer} alt="user icon"/>
-                            <p>Name</p>
+                            <p>M. Williams</p>
                         </div>
                         <div className="review">
-                            “Review text.”
+                            “I highly recommend Little Lemon to anyone looking for a delicious and authentic Mediterranean meal in Chicago. You won't be disappointed!”
                         </div>
                 </div>
 

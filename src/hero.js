@@ -11,7 +11,7 @@ function Hero(){
                     <h2>Chicago</h2>
                     <p>&nbsp;</p>
                     <p className="leadText">We are a family-owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.</p>
-                    <p><Link to="/navigation" className="button">Reserve a Table</Link><a id="reservations"></a></p>
+                    <p><Link to="/reservations" className="button">Reserve a Table</Link><a id="reservations"></a></p>
                 </div>
                 <div className="heroImage">
                     <img src={heroImage} alt="bruschetta" />

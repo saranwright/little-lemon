@@ -1,7 +1,18 @@
 import './App.css';
 import footerImage from './assets/Asset 22@4x.png';
+import { Link, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 
 function Footer(){
+
+    const {hash, key} = useLocation()
+    useEffect(()=>{
+        if(hash){
+        const targetElement = document.getElementById(hash.substring(1))
+            targetElement?.scrollIntoView({behavior: 'smooth'})
+        }
+    }, [key, hash]);
+
     return(
         <div className="footer">
             <div className="main">
@@ -11,25 +22,25 @@ function Footer(){
                 <div>
                     <h4>Little Lemon Restaurant</h4>
                     <ul>
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/about">About</a></li>
-                        <li><a href="/menu">Menu</a></li>
-                        <li><a href="/reservations">Reservations</a></li>
-                        <li><a href="/order-online">Order Online</a></li>
-                        <li><a href="/login">Login</a></li>
+                    <li><Link to="/home">Home</Link></li>
+                    <li><Link to={{pathname: '/home', hash: '#about'}}>About</Link></li>
+                    <li><Link to={{pathname: '/home', hash: '#menu'}}>Menu</Link></li>
+                    <li><Link to="/reservations">Reservations</Link></li>
+                    <li><Link to={{pathname: '/home', hash: '#menu'}}>Order&nbsp;Online</Link></li>
+                    <li><Link to="/home">Login</Link></li>
                     </ul>
                 </div>
                 <div>
                     <h4>Contact</h4>
-                    <p>Address</p>
-                    <p>Phone Number</p>
-                    <p>Email</p>
+                    <p>1234 Restaurant Row</p>
+                    <p>(000) 000-0000</p>
+                    <p><a href="mailto:food@littlelemon.com">food@littlelemon.com</a></p>
                 </div>
                 <div>
-                    <h4>Social Media Links</h4>
-                    <p>Social 1</p>
-                    <p>Social 2</p>
-                    <p>Social 3</p>
+                    <h4>Social Media</h4>
+                    <p>Twitter</p>
+                    <p>Instagram</p>
+                    <p>TikTok</p>
                 </div>
             </div>
         </div>

@@ -4,6 +4,7 @@ import Nav from './nav';
 import Home from './home';
 import Footer from './footer';
 import Booking from './booking';
+import Confirmation from './confirmation';
 import { Route, Routes } from 'react-router-dom';
 
 
@@ -18,6 +19,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="*" element={<Home />} />
           <Route path="/reservations" element={<Booking />} />
+          <Route path="/confirmation" element={<Confirmation />} />
         </Routes>
 
       <Footer/>

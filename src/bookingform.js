@@ -95,7 +95,7 @@ const BookingForm = () => {
 
     // EVENT HANDLERS /////////////////////////////
     const submitForm = (form) => {
-        submitAPI(form) && navigate("/confirmed-booking", { state: form });
+        submitAPI(form) && navigate("/confirmation", { state: form });
     }
 
     const handleSubmit = (e) => {
@@ -291,7 +291,7 @@ const BookingForm = () => {
                         <option>Other</option>
                     </select>
                 </div>
-
+                        <p>&nbsp;</p>
                 {/* terms & conditions  ////////////////////////////*/}
                 <div className="form-field form-terms">
                     <input
@@ -305,7 +305,7 @@ const BookingForm = () => {
                     />
                     <label htmlFor="res-terms">I agree to <Link to="/terms">&nbsp;terms & conditions.</Link><sup>*</sup></label>
                 </div>
-
+                        <p>&nbsp;</p>
                 <input
                     aria-label="Submit form."
                     data-testid="res-submit"

@@ -1,11 +1,21 @@
 import './App.css';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 import GreekSalad from './assets/greek salad.jpg';
 import Bruschetta from './assets/bruschetta.jpg';
 import Lemon from './assets/lemon dessert.jpg';
 import Delivery from './assets/moped-solid.svg';
 
 function Specials(){
+
+    const {hash, key} = useLocation()
+        useEffect(()=>{
+            if(hash){
+            const targetElement = document.getElementById(hash.substring(1))
+                targetElement?.scrollIntoView({behavior: 'smooth'})
+            }
+        }, [key, hash]);
+
     return(
         <div className="specials">
             <div className="main">
@@ -14,7 +24,7 @@ function Specials(){
                         <h2>Specials<a id="menu"></a></h2>
                     </div>
                     <div>
-                        <Link to="/" className="button">Online Menu</Link>
+                        <Link to={{pathname: '/home', hash: '#menu'}} className="button">Online Menu</Link>
                     </div>
                 </div>
                 <div className="specialsBlocks">
