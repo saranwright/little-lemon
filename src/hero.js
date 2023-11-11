@@ -9,6 +9,7 @@ function Hero(){
                 <div className="heroText">
                     <h1>Little Lemon</h1>
                     <h2>Chicago</h2>
+                    <p>&nbsp;</p>
                     <p className="leadText">We are a family-owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.</p>
                     <p><Link to="/navigation" className="button">Reserve a Table</Link></p>
                 </div>

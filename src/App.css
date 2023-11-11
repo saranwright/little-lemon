@@ -156,11 +156,12 @@ p {
 
 .hero .heroText {
   max-width: 50%;
-  padding: 1em 0em;
+  padding: 2em 0em 1em 0em;
 }
 
 .hero .heroText h1, .hero .heroText h2 {
-  margin:0;
+  margin: 0;
+  line-height: 0.75;
 }
 
 .hero .heroText h1 {
@@ -292,6 +293,7 @@ p {
   min-height: 150px;
   background-color: var(--secondary3);
   margin: 1em;
+  border-radius: var(--borderRadius);
 }
 
 .ratings .ratingBox p {
@@ -328,19 +330,54 @@ p {
   margin: 1em 2em 2em 2em;
 }
 
+/* About Section */
+
+.about {
+  min-height: 300px;
+  max-height: 800px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 4em 0em;
+}
+
+.about .info {
+  max-width: 30%;
+  margin: 0em 4em 0em 1em;
+}
+
+.about h1, .about h2 {
+  margin: 0;
+  line-height: 0.75;
+  color: var(--primary);
+}
+
+.about img {
+  max-width: 400px;
+}
+
 /* Footer Section */
 
 .footer {
+  width: 100%;
+  margin: 0 auto;
+  background-color: var(--primary);
+}
+
+.footer .main {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  width: 80%;
   margin: 0 auto;
-  max-width: 800px;
+  padding: 4em 0em;
 }
 
 .footer h4 {
-  color: var(--primary);
+  color: var(--primary2);
+}
+
+.footer p, .footer a {
+  color: var(--secondary3);
 }
 
 .footer img {
@@ -465,6 +502,23 @@ p {
 
   .testimonials .ratings {
     overflow-x: auto;
+  }
+
+  /* Mobile About */
+
+  .about {
+    flex-direction: column;
+    padding: 2em 0em;
+  }
+
+  .about .info {
+    max-width: 90%;
+    margin: 1em;
+  }
+
+  .about img {
+    margin: auto;
+    display: block;
   }
 
   /* Mobile Footer */
