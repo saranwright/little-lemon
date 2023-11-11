@@ -13,12 +13,14 @@ h1 {
   font-family: "Markazi Text", serif;
   font-size: 64px;
   font-weight: 500;
+  margin: 0.2em 0;
 }
 
 h2 {
   font-family: "Markazi Text", serif;
   font-size: 40px;
   font-weight: 400;
+  margin: 0.2em 0;
 }
 
 h3 {
@@ -44,12 +46,14 @@ p {
   font-family: "Karla", sans-serif;
   font-size: 16px;
   font-weight: 500;
+  margin: 0.2em 0;
 }
 
 .leadText {
   font-family: "Karla", sans-serif;
   font-size: 18px;
   font-weight: 500;
+  margin: 0.2em 0;
 }
 
 .button {
@@ -60,6 +64,8 @@ p {
   font-weight: 500;
   text-decoration: none;
   border-radius: var(--borderRadius);
+  margin: 0.2em 0;
+  display: inline-block;
 }
 
 .headerLogo {
@@ -115,10 +121,45 @@ p {
 }
 
 .main {
-  margin: auto;
+  margin: 1em auto;
   max-width: 750px;
   padding: 0 2em;
   min-height: 200px;
+}
+
+.hero {
+  background-color: var(--primary);
+  min-height: 300px;
+  box-shadow: 0px -50px 0px white inset;
+}
+
+.hero .main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.hero .heroText {
+  max-width: 50%;
+  padding: 1em;
+}
+
+.hero .heroText h1, .hero .heroText h2 {
+  margin:0;
+}
+
+.hero .heroText h1 {
+  color: var(--primary2);
+}
+
+.hero .heroText h2, .hero .heroText .leadText {
+  color: var(--secondary3);
+}
+
+.hero .heroImage img {
+  max-width: 225px;
+  padding: 1em;
+  border-radius: 30px;
 }
 
 .footer {

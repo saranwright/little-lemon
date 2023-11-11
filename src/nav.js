@@ -1,6 +1,7 @@
 import './App.css';
 import logo from './assets/Logo.svg';
 import hamburger from './assets/hamburger.png';
+import { Link } from 'react-router-dom';
 
 function Nav(){
     return(
@@ -9,7 +10,7 @@ function Nav(){
             <label htmlFor="mobileNav"><img src={hamburger} alt="menu icon"></img></label>
             <ul className="navContent">
                 <li><img src={logo} alt="Little Lemon Logo" /></li>
-                <li><a href="/">HOME</a></li>
+                <li><Link to="/home">HOME</Link></li>
                 <li><a href="/about">ABOUT</a></li>
                 <li><a href="/menu">MENU</a></li>
                 <li><a href="/reservations">RESERVATIONS</a></li>

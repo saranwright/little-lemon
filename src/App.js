@@ -1,10 +1,10 @@
 import './App.css';
 import Header from './header';
 import Nav from './nav';
-import Main from './main';
 import Home from './home';
 import Footer from './footer';
 import Booking from './booking';
+import { Route, Routes } from 'react-router-dom';
 
 
 function App() {
@@ -12,9 +12,15 @@ function App() {
     <div className="App">
       <Header/>
       <Nav/>
-      <Main/>
-      <Footer/>
 
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route index element={<Home />} />
+          <Route path="*" element={<Home />} />
+          <Route path="/reservation" element={<Booking />} />
+        </Routes>
+
+      <Footer/>
     </div>
   );
 }
