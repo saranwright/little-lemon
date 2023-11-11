@@ -426,16 +426,20 @@ p {
   align-items: start;
 }
 
-.booking button {
+.booking button, .booking input[type="submit"] {
   border: none;
   display: block;
 }
 
-.booking button:hover {
+.booking button:hover, .booking input[type="submit"]:hover {
   cursor: pointer;
 }
 
-.booking button:active {
+.booking a {
+  text-decoration: none;
+}
+
+.booking button:active, .booking input[type="submit"]:active {
   background: var(--primary2);
   box-shadow: inset 0px 0px 5px #c0a108;
   outline: none;
@@ -448,6 +452,11 @@ p {
 .booking input:focus, .booking select:focus, .booking textarea:focus {
   outline: none;
   border: 2px solid var(--secondary2);
+}
+
+.booking .form-terms {
+  display: flex;
+  flex-direction: row;
 }
 
 /* Footer Section */

@@ -1,5 +1,5 @@
 import './App.css';
-import ReservationForm from './bookingform';
+import { BookingForm } from './bookingform';
 import { useReducer } from 'react';
 import { fetchAPI } from './bookingsAPI';
 
@@ -17,7 +17,7 @@ function Booking() {
         <div className="booking">
             <div className="main">
                 <h2>Make a Reservation</h2>
-                <ReservationForm availableTimes={availableTimes} updateTimes={dispatch} />
+                <BookingForm />
             </div>
         </div>
     );

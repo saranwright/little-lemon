@@ -1,174 +1,323 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-export default function ReservationForm(props) {
-  const [fName, setFName] = useState("");
-  const [lName, setLName] = useState("");
-  const [email, setEmail] = useState("");
-  const [tel, setTel] = useState("");
-  const [people, setPeople] = useState(1);
-  const [date, setDate] = useState("");
-  const [occasion, setOccasion] = useState("");
-  const [preferences, setPreferences] = useState("");
-  const [comments, setComments] = useState("");
+import { useState, useReducer, useEffect } from 'react';
+import { fetchAPI, submitAPI } from "./bookingsAPI.js";
+import { useNavigate, Link } from 'react-router-dom';
+import { isFormValid, isInputValid, validateEmail } from './bookingvalidation.js';
+import { getTodaysDate } from './util.js';
 
-  const [finalTime, setFinalTime] = useState(
-    props.availableTimes.map((times) => <option>{times}</option>)
-  );
-
-  function handleDateChange(e) {
-    setDate(e.target.value);
-
-    var stringify = e.target.value;
-    const date = new Date(stringify);
-
-    props.updateTimes(date);
-
-    setFinalTime(props.availableTimes.map((times) => <option>{times}</option>));
-  }
-
-  return (
-    <form className="reservation-form">
-      <div>
-        <label htmlFor="fName">First Name</label>
-        <input
-          type="text"
-          id="fName"
-          placeholder="First Name"
-          required
-          minLength={2}
-          maxLength={50}
-          value={fName}
-          onChange={(e) => setFName(e.target.value)}
-        ></input>
-      </div>
-
-      <div>
-        <label htmlFor="lName">Last Name</label>
-        <input
-          type="text"
-          id="lName"
-          placeholder="Last Name"
-          minLength={2}
-          maxLength={50}
-          value={lName}
-          onChange={(e) => setLName(e.target.value)}
-        ></input>
-      </div>
-
-      <div>
-        <label htmlFor="email">Email</label>
-        <input
-          type="email"
-          id="email"
-          placeholder="Email"
-          value={email}
-          required
-          minLength={4}
-          maxLength={200}
-          onChange={(e) => setEmail(e.target.value)}
-        ></input>
-      </div>
-
-      <div>
-        <label htmlFor="phonenum">Phone Number</label>
-        <input
-          type="tel"
-          id="phonenum"
-          placeholder="(xxx)-xxx-xxxx"
-          value={tel}
-          required
-          minLength={10}
-          maxLength={25}
-          onChange={(e) => setTel(e.target.value)}
-        ></input>
-      </div>
-
-      <div>
-        <label htmlFor="people">Number of Guests</label>
-        <input
-          type="number"
-          id="people"
-          placeholder="Number of People"
-          value={people}
-          required
-          min={1}
-          max={100}
-          onChange={(e) => setPeople(e.target.value)}
-        ></input>
-      </div>
-
-      <div>
-        <label htmlFor="date">Select Reservation Date</label>
-        <input
-          type="date"
-          id="date"
-          required
-          value={date}
-          onChange={handleDateChange}
-        ></input>
-      </div>
-
-      <div>
-        <label htmlFor="time">Select Reservation Time</label>
-        <select id="time" required>
-          {finalTime}
-        </select>
-      </div>
-
-      <div>
-        <label htmlFor="occasion">Occasion</label>
-        <select
-          id="occasion"
-          value={occasion}
-          onChange={(e) => setOccasion(e.target.value)}
-        >
-          <option>None</option>
-          <option>Birthday</option>
-          <option>Anniversary</option>
-          <option>Engagement</option>
-          <option>Other</option>
-        </select>
-      </div>
-
-      <div>
-        <label htmlFor="preferences">Seating preferences</label>
-        <select
-          id="preferences"
-          value={preferences}
-          onChange={(e) => setPreferences(e.target.value)}
-        >
-          <option>None</option>
-          <option>Indoors</option>
-          <option>Outdoor (Patio)</option>
-          <option>Outdoor (Sidewalk)</option>
-        </select>
-      </div>
-
-      <div>
-        <label htmlFor="comments">Additional Comments</label> 
-        <textarea
-          id="comments"
-          rows={8}
-          cols={50}
-          placeholder="Additional Comments"
-          value={comments}
-          onChange={(e) => setComments(e.target.value)}
-        ></textarea>
-      </div>
-
-      <div>
-        <br></br>
-        <small>
-          <p>
-            Note: You cannot edit your reservation after submission. Please
-            double-check your answer before submitting your reservation request.
-          </p>
-        </small>
-        <br></br>
-        <Link className="button" to="/confirmation">
-          Book Table
-        </Link>
-      </div>
-    </form>
-  );
+const availableTimes = (state, action) => {
+    switch (action.type) {
+        case "initialize":
+            const dates = fetchAPI(action.payload);
+            return ["", ...dates];
+        case "update":
+            const updatedDates = fetchAPI(action.payload);
+            return ["", ...updatedDates];
+        default:
+            return state;
+    }
 }
+
+const BookingSlots = ({ bookingData, initializeTimes }) => {
+    // wrapping initializeTimes inside useEffect resolves "cannot update a component while rendering a different component" error
+    useEffect(() => {
+        if (bookingData.length === 0) {
+            initializeTimes(new Date());
+        }
+    });
+    return <>
+        {bookingData.map(time => <option key={time}>{time}</option>)}
+    </>
+}
+
+const BookingForm = () => {
+    const navigate = useNavigate();
+    const today = getTodaysDate();
+
+    const [bookingData, dispatch] = useReducer(
+        availableTimes,
+        []
+    );
+
+    const [form, setForm] = useState(() => {
+        const form = JSON.parse(localStorage.getItem("form"));
+        if (form) {
+            // previously selected time may no longer be available
+            // if unavailable - override localStorage empty string value to keep submit button disabled
+            // if available - keep as is
+            return {
+                ...form,
+                date: // revert to default date (today) if user clears date input before navigating away from page, override empty string
+                    form.date === "" ? today : form.date,
+                time:
+                    form.time || ""
+            };
+        } else {
+            return {
+                firstName: "",
+                lastName: "",
+                email: "",
+                date: today,
+                time: "",
+                guests: 2,
+                occasion: ""
+            };
+        }
+    });
+
+    const [isTermsChecked, setIsTermsChecked] = useState(false);
+
+    const [isTouched, setIsTouched] = useState({
+        firstName: false,
+        lastName: false,
+        email: false,
+        time: false
+    });
+
+    // set up localStorage ///////////////////////////////
+    useEffect(() => {
+        localStorage.setItem("form", JSON.stringify(form));
+    }, [form]);
+
+    // DISPATCH FUNCTIONS ///////////////////////////////
+    const initializeTimes = (date) => {
+        dispatch({
+            type: "initialize",
+            payload: date
+        })
+    }
+
+    const updateTimes = (selection) => {
+        dispatch({
+            type: "update",
+            payload: selection
+        })
+    }
+
+    // EVENT HANDLERS /////////////////////////////
+    const submitForm = (form) => {
+        submitAPI(form) && navigate("/confirmed-booking", { state: form });
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        localStorage.clear();
+        submitForm(form);
+        console.log(form);
+    }
+
+    const handleDateChange = e => {
+        setForm({
+            ...form,
+            date: e.target.value,
+            time: ""
+        });
+        updateTimes(new Date(e.target.value));
+    }
+
+
+    return (
+        <form onSubmit={handleSubmit}>
+
+            <div className="form-details">
+                {/* NAME /////////////////////////////////////////////// */}
+                <div className="form-field">
+                    <label htmlFor="res-fname">First Name<sup>*</sup></label>
+                    <div className="form-required-field">
+                        <input
+                            className={(isTouched.firstName && !isInputValid(form.firstName)) ? "invalid-input" : undefined}
+                            data-testid="res-fname"
+                            id="res-fname"
+                            minLength="1"
+                            name="res-fname"
+                            onChange={e => {
+                                setForm({
+                                    ...form,
+                                    firstName: e.target.value
+                                });
+                                setIsTouched({
+                                    ...isTouched,
+                                    firstName: true
+                                });
+                            }}
+                            type="text"
+                            value={form.firstName}
+                            required
+                        />
+                        {(isTouched.firstName && !isInputValid(form.firstName)) && <p className="error-msg">⚠️ Please enter your first name.</p>}
+                    </div>
+                </div>
+
+                <div className="form-field">
+                    <label htmlFor="res-lname">Last Name<sup>*</sup></label>
+                    <div className="form-required-field">
+                        <input
+                            className={(isTouched.lastName && !isInputValid(form.lastName)) ? "invalid-input" : undefined}
+                            data-testid="res-lname"
+                            id="res-lname"
+                            minLength="1"
+                            name="res-lname"
+                            onChange={e => {
+                                setForm({
+                                    ...form,
+                                    lastName: e.target.value
+                                });
+                                setIsTouched({
+                                    ...isTouched,
+                                    lastName: true
+                                });
+                            }}
+                            type="text"
+                            value={form.lastName}
+                            required
+                        />
+                        {(isTouched.lastName && !isInputValid(form.lastName)) && <p className="error-msg">⚠️ Please enter your last name.</p>}
+                    </div>
+                </div>
+
+                {/* EMAIL /////////////////////////////////////////////// */}
+                <div className="form-field">
+                    <label htmlFor="res-email">Email<sup>*</sup></label>
+                    <div className="form-required-field">
+                        <input
+                            className={(isTouched.email && !validateEmail(form.email)) ? "invalid-input" : undefined}
+                            data-testid="res-email"
+                            id="res-email"
+                            name="res-email"
+                            onChange={e => {
+                                setForm({
+                                    ...form,
+                                    email: e.target.value
+                                });
+                                setIsTouched({
+                                    ...isTouched,
+                                    email: true
+                                });
+                            }}
+                            placeholder="example@domain.com"
+                            type="email"
+                            value={form.email}
+                            required
+                        />
+                        {(isTouched.email && !validateEmail(form.email)) && <p className="error-msg">⚠️ Please enter a valid email address.</p>}
+                    </div>
+                </div>
+
+                {/* DATE /////////////////////////////////////////////// */}
+                <div className="form-field">
+                    <label htmlFor="res-date">Choose date<sup>*</sup></label>
+                    <div className="form-required-field">
+                        <input
+                            data-testid="res-date"
+                            id="res-date"
+                            min={today}
+                            name="res-date"
+                            onChange={handleDateChange}
+                            type="date"
+                            value={form.date}
+                            required
+                        />
+                    </div>
+                </div>
+
+                {/* TIME /////////////////////////////////////////////// */}
+                <div className="form-field">
+                    <label htmlFor="res-time">Choose time<sup>*</sup></label>
+                    <div className="form-required-field">
+                        <select
+                            className={(isTouched.time && !isInputValid(form.time)) ? "invalid-input" : undefined}
+                            data-testid="res-time"
+                            id="res-time"
+                            name="res-time"
+                            onChange={e => {
+                                setForm({
+                                    ...form,
+                                    time: e.target.value
+                                });
+                                setIsTouched({
+                                    ...isTouched,
+                                    time: true
+                                });
+                            }}
+                            value={form.time}
+                            required
+                        >
+                            <BookingSlots bookingData={bookingData} initializeTimes={initializeTimes} /> :
+                        </select>
+                        {(isTouched.time && !isInputValid(form.time)) && <p className="error-msg">⚠️ Please select a time from the dropdown.</p>}
+                    </div>
+                </div>
+
+                {/* GUESTS /////////////////////////////////////////////// */}
+                <div className="form-field">
+                    <label htmlFor="guests">Number of guests<sup>*</sup></label>
+                    <div className="form-required-field">
+                        <input
+                            data-testid="res-guests"
+                            id="guests"
+                            name="guests"
+                            onChange={e => {
+                                setForm({
+                                    ...form,
+                                    guests: e.target.value
+                                });
+                            }}
+                            min="1"
+                            max="10"
+                            placeholder="1"
+                            type="number"
+                            value={form.guests}
+                            required
+                        />
+                    </div>
+                </div>
+
+                {/* OCCASION /////////////////////////////////////////////// */}
+                <div className="form-field">
+                    <label htmlFor="occasion">Occasion</label>
+                    <select
+                        id="occasion"
+                        name="occasion"
+                        onChange={e => {
+                            setForm({
+                                ...form,
+                                occasion: e.target.value
+                            });
+                        }}
+                        value={form.occasion}
+                    >
+                        <option></option>
+                        <option>Birthday</option>
+                        <option>Anniversary</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+
+                {/* terms & conditions  ////////////////////////////*/}
+                <div className="form-field form-terms">
+                    <input
+                        data-testid="res-terms"
+                        id="res-terms"
+                        name="res-terms"
+                        onChange={() => setIsTermsChecked(!isTermsChecked)}
+                        type="checkbox"
+                        value={isTermsChecked}
+                        required
+                    />
+                    <label htmlFor="res-terms">I agree to <Link to="/terms">&nbsp;terms & conditions.</Link><sup>*</sup></label>
+                </div>
+
+                <input
+                    aria-label="Submit form."
+                    data-testid="res-submit"
+                    className="button"
+                    title={isFormValid(form, isTermsChecked) ? "Submit form." : "Please complete all required fields."}
+                    type="submit"
+                    value="Book Table"
+                    disabled={!isFormValid(form, isTermsChecked)}
+                />
+            </div>
+        </form>
+    );
+}
+
+export { BookingForm, availableTimes, BookingSlots };
