@@ -1,5 +1,5 @@
-import './App.css';
-import Owners from './assets/Owners.png';
+import '../App.css';
+import Owners from '../assets/Owners.png';
 
 function About(){
     return(

@@ -1,5 +1,5 @@
-import './App.css';
-import footerImage from './assets/Asset 22@4x.png';
+import '../App.css';
+import footerImage from '../assets/Asset 22@4x.png';
 import { Link, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 

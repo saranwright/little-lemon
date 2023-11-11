@@ -1,7 +1,7 @@
-import './App.css';
+import '../App.css';
 import { BookingForm } from './bookingform';
 import { useReducer } from 'react';
-import { fetchAPI } from './bookingsAPI';
+import { fetchAPI } from '../bookingsAPI';
 
 function Booking() {
 

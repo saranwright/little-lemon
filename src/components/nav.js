@@ -1,6 +1,6 @@
-import './App.css';
-import logo from './assets/Logo.svg';
-import hamburger from './assets/hamburger.png';
+import '../App.css';
+import logo from '../assets/Logo.svg';
+import hamburger from '../assets/hamburger.png';
 import { Link, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 
@@ -27,7 +27,7 @@ function Nav(){
             <input type="checkbox" id="mobileNav" onClick={toggleNav}></input>
             <label htmlFor="mobileNav"><img src={hamburger} alt="menu icon"></img></label>
             <ul className="navContent">
-                <li><img src={logo} alt="Little Lemon Logo" /></li>
+                <li><Link to="/home"><img src={logo} alt="Little Lemon Logo" /></Link></li>
                 <li><Link to="/home">HOME</Link></li>
                 <li><Link to={{pathname: '/home', hash: '#about'}}>ABOUT</Link></li>
                 <li><Link to={{pathname: '/home', hash: '#menu'}}>MENU</Link></li>

@@ -1,10 +1,10 @@
-import './App.css';
+import '../App.css';
 import { Link, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
-import GreekSalad from './assets/greek salad.jpg';
-import Bruschetta from './assets/bruschetta.jpg';
-import Lemon from './assets/lemon dessert.jpg';
-import Delivery from './assets/moped-solid.svg';
+import GreekSalad from '../assets/greek salad.jpg';
+import Bruschetta from '../assets/bruschetta.jpg';
+import Lemon from '../assets/lemon dessert.jpg';
+import Delivery from '../assets/moped-solid.svg';
 
 function Specials(){
 

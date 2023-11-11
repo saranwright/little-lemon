@@ -1,10 +1,10 @@
 import './App.css';
-import Header from './header';
-import Nav from './nav';
-import Home from './home';
-import Footer from './footer';
-import Booking from './booking';
-import Confirmation from './confirmation';
+import Header from './components/header';
+import Nav from './components/nav';
+import Home from './components/home';
+import Footer from './components/footer';
+import Booking from './components/booking';
+import Confirmation from './components/confirmation';
 import { Route, Routes } from 'react-router-dom';
 
 

@@ -1,7 +1,7 @@
-import './App.css';
-import Customer from './assets/circle-user-light.svg';
-import Star from './assets/star-light.svg';
-import HalfStar from './assets/star-half-light.svg';
+import '../App.css';
+import Customer from '../assets/circle-user-light.svg';
+import Star from '../assets/star-light.svg';
+import HalfStar from '../assets/star-half-light.svg';
 
 function Testimonials(){
     return(

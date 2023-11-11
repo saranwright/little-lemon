@@ -1,6 +1,6 @@
-import './App.css';
+import '../App.css';
 import { useLocation, Link } from 'react-router-dom';
-import { reformatDate, reformatTime } from './util';
+import { reformatDate, reformatTime } from '../util';
 
 function Confirmation() {
 

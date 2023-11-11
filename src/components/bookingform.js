@@ -1,8 +1,8 @@
 import { useState, useReducer, useEffect } from 'react';
-import { fetchAPI, submitAPI } from "./bookingsAPI.js";
+import { fetchAPI, submitAPI } from "../bookingsAPI.js";
 import { useNavigate, Link } from 'react-router-dom';
-import { isFormValid, isInputValid, validateEmail } from './bookingvalidation.js';
-import { getTodaysDate } from './util.js';
+import { isFormValid, isInputValid, validateEmail } from '../bookingvalidation.js';
+import { getTodaysDate } from '../util.js';
 
 const availableTimes = (state, action) => {
     switch (action.type) {
