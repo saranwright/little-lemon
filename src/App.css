@@ -6,8 +6,9 @@
   --secondary3: #EDEFEE;
   --secondary4: #333;
   --borderRadius: 5px;
-
+  --mobileNav: 180px;
 }
+
 
 /* Universal Styles */
 
@@ -356,6 +357,99 @@ p {
   max-width: 400px;
 }
 
+/* Reservation Section */
+
+.booking .main {
+  margin-top: 5em;
+}
+
+.booking form {
+  width: auto;
+  margin: 1em auto 6em auto;
+}
+
+.booking label {
+  font-family: 'Karla', sans-serif;
+  font-weight: 600;
+  display: flex;
+}
+
+.booking .error {
+  color: red;
+  margin: 0 0 1em 0;
+  font-size: 12px;
+}
+
+.booking input[type="text"], .booking input[type="number"], .booking input[type="date"], .booking input[type="time"], .booking input[type="email"], .booking input[type="tel"], .booking select {
+  padding: 0.65rem 0.5rem;
+  border: 2px solid var(--secondary3);
+  border-radius: var(--borderRadius);
+}
+
+.booking input[type="text"], .booking input[type="number"], .booking input[type="date"], .booking input[type="time"], .booking input[type="email"], .booking input[type="tel"],  .booking textarea, .booking select {
+  width: 400px;
+  font-family: 'Karla', sans-serif;
+  margin: 1em 0em;
+}
+
+.booking textarea {
+  border-radius: var(--borderRadius);
+}
+
+.booking input[type="radio"] {
+  padding: 0;
+  margin: 5px;
+}
+
+.booking .radioDate {
+  display: block;
+  margin: 0 5px 0 0;
+  line-height: 1.5;
+  width: fit-content;
+}
+
+.booking .radio {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1em;
+  margin-top:  5px;
+}
+
+.booking .radio label {
+  font-weight: 400;
+}
+
+.radio .radioOption {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+}
+
+.booking button {
+  border: none;
+  display: block;
+}
+
+.booking button:hover {
+  cursor: pointer;
+}
+
+.booking button:active {
+  background: var(--primary2);
+  box-shadow: inset 0px 0px 5px #c0a108;
+  outline: none;
+}
+
+.booking textarea {
+  font-family: 'Karla', sans-serif;
+}
+
+.booking input:focus, .booking select:focus, .booking textarea:focus {
+  outline: none;
+  border: 2px solid var(--secondary2);
+}
+
 /* Footer Section */
 
 .footer {
@@ -407,7 +501,7 @@ p {
   
   .topNav {
     width: 90%;
-    height: 1px;
+    height: 0;
     margin: 0;
     flex-direction: column;
     margin: auto;
@@ -519,6 +613,20 @@ p {
   .about img {
     margin: auto;
     display: block;
+  }
+
+  /* Mobile Form */
+
+  .booking .main {
+    margin-top: 2em;
+  }
+
+  .booking form {
+    margin-bottom: 4em;
+  }
+  
+  .booking input[type="text"], .booking input[type="number"], .booking input[type="date"], .booking input[type="time"], .booking textarea, .booking select {
+    max-width: 90%;
   }
 
   /* Mobile Footer */

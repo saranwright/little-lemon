@@ -11,7 +11,7 @@ function Specials(){
             <div className="main">
                 <div className="specialsHeader">
                     <div>
-                        <h2>Specials</h2>
+                        <h2>Specials<a id="menu"></a></h2>
                     </div>
                     <div>
                         <Link to="/" className="button">Online Menu</Link>
