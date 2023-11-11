@@ -264,6 +264,70 @@ p {
   margin-left: 5px;
 }
 
+/* Testimonials Section */
+
+.testimonials {
+  min-height: 300px;
+  max-height: 800px;
+  background-color: var(--primary);
+  display: flex;
+  flex-direction: column;
+}
+
+.testimonials h2 {
+  color: var(--secondary3);
+  text-align: center;
+  margin: 2em auto 1em auto;
+}
+
+.testimonials .ratings {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 6em;
+}
+
+.ratings .ratingBox {
+  min-width: 200px;
+  min-height: 150px;
+  background-color: var(--secondary3);
+  margin: 1em;
+}
+
+.ratings .ratingBox p {
+  margin: 2em 0em 1em 2em;
+  font-weight: 800;
+  font-size: 14px;
+  color: var(--primary);
+}
+
+.ratings .ratingBox p img {
+  max-width: 20px;
+  color: var(--primary2);
+}
+
+.ratingBox .customer {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  margin-left: 2em;
+}
+
+.ratingBox .customer img {
+  max-width: 50px;
+  fill: var(--primary);
+}
+
+.ratingBox .customer p {
+  margin: 1em;
+
+}
+
+.ratingBox .review {
+  font-size: 14px;
+  margin: 1em 2em 2em 2em;
+}
+
 /* Footer Section */
 
 .footer {
@@ -390,6 +454,16 @@ p {
   }
   
   .specials .main .specialsBlocks {
+    overflow-x: auto;
+  }
+
+  /* Mobile Testimonials */
+
+  .testimonials {
+    width: 100%;
+  }
+
+  .testimonials .ratings {
     overflow-x: auto;
   }
 
