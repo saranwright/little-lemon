@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/little-lemon/static/css/main.bc289548.css",
+    "main.js": "/little-lemon/static/js/main.34625bdc.js",
+    "static/js/787.0e637884.chunk.js": "/little-lemon/static/js/787.0e637884.chunk.js",
+    "static/media/Owners.png": "/little-lemon/static/media/Owners.4dff85d5ef7a9eb55afe.png",
+    "static/media/bruschetta.jpg": "/little-lemon/static/media/bruschetta.5265fe7953ae155569ab.jpg",
+    "static/media/greek salad.jpg": "/little-lemon/static/media/greek salad.bed423a1fab5b210e347.jpg",
+    "static/media/restaurantfood.jpg": "/little-lemon/static/media/restaurantfood.e8abf5b772b6817189aa.jpg",
+    "static/media/Asset 22@4x.png": "/little-lemon/static/media/Asset 22@4x.015d5b1bf9b00008103d.png",
+    "static/media/Logo.svg": "/little-lemon/static/media/Logo.6c132dfefa69396bba43f72aa595e62f.svg",
+    "index.html": "/little-lemon/index.html",
+    "static/media/moped-solid.svg": "/little-lemon/static/media/moped-solid.18d458c38cdf7dbd6c2311e511067ff6.svg",
+    "static/media/star-light.svg": "/little-lemon/static/media/star-light.a0645134e6bbfb69af1f5d476702e5a4.svg",
+    "static/media/circle-user-light.svg": "/little-lemon/static/media/circle-user-light.0f4684c74de570ccf6c715a1a386c67c.svg",
+    "static/media/star-half-light.svg": "/little-lemon/static/media/star-half-light.d55233725cd82908a3832c254273edcd.svg",
+    "main.bc289548.css.map": "/little-lemon/static/css/main.bc289548.css.map",
+    "main.34625bdc.js.map": "/little-lemon/static/js/main.34625bdc.js.map",
+    "787.0e637884.chunk.js.map": "/little-lemon/static/js/787.0e637884.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bc289548.css",
+    "static/js/main.34625bdc.js"
+  ]
+}
