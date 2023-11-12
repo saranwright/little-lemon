@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/css/main.bc289548.css",
+    "main.js": "/static/js/main.2c68b0ae.js",
+    "static/js/787.0e637884.chunk.js": "/static/js/787.0e637884.chunk.js",
+    "static/media/Owners.png": "/static/media/Owners.4dff85d5ef7a9eb55afe.png",
+    "static/media/bruschetta.jpg": "/static/media/bruschetta.5265fe7953ae155569ab.jpg",
+    "static/media/greek salad.jpg": "/static/media/greek salad.bed423a1fab5b210e347.jpg",
+    "static/media/restaurantfood.jpg": "/static/media/restaurantfood.e8abf5b772b6817189aa.jpg",
+    "static/media/Asset 22@4x.png": "/static/media/Asset 22@4x.015d5b1bf9b00008103d.png",
+    "static/media/Logo.svg": "/static/media/Logo.6c132dfefa69396bba43f72aa595e62f.svg",
+    "index.html": "/index.html",
+    "static/media/moped-solid.svg": "/static/media/moped-solid.18d458c38cdf7dbd6c2311e511067ff6.svg",
+    "static/media/star-light.svg": "/static/media/star-light.a0645134e6bbfb69af1f5d476702e5a4.svg",
+    "static/media/circle-user-light.svg": "/static/media/circle-user-light.0f4684c74de570ccf6c715a1a386c67c.svg",
+    "static/media/star-half-light.svg": "/static/media/star-half-light.d55233725cd82908a3832c254273edcd.svg",
+    "main.bc289548.css.map": "/static/css/main.bc289548.css.map",
+    "main.2c68b0ae.js.map": "/static/js/main.2c68b0ae.js.map",
+    "787.0e637884.chunk.js.map": "/static/js/787.0e637884.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bc289548.css",
+    "static/js/main.2c68b0ae.js"
+  ]
+}
