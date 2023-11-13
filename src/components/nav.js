@@ -25,7 +25,7 @@ function Nav(){
     return(
         <nav className="topNav" id="topNav">
             <input type="checkbox" id="mobileNav" onClick={toggleNav}></input>
-            <label htmlFor="mobileNav"><img src={hamburger} alt="menu icon"></img></label>
+            <label htmlFor="mobileNav"><img src={hamburger} alt="menu icon"/></label>
             <ul className="navContent">
                 <li><Link to="/home"><img src={logo} alt="Little Lemon Logo" /></Link></li>
                 <li><Link to="/home">HOME</Link></li>

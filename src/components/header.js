@@ -1,9 +1,10 @@
 import '../App.css';
 import Logo from '../assets/Logo.svg';
+import { Link } from 'react-router-dom';
 
 function Header(){
     return(
-        <div className="headerLogo"><img src={Logo} alt="Little Lemon Logo" /></div>
+        <div className="headerLogo"><Link to="/home"><img src={Logo} alt="Little Lemon Logo" /></Link></div>
     );
 }
 
